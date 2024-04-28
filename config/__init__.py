@@ -1,0 +1,1 @@
+from config.config import dct_config as config
