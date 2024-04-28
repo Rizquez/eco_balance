@@ -26,8 +26,15 @@ La interfaz permite a los usuarios:
 │   └── config.py
 ├── src
 │   ├── routes
+│   │   └── routes.py
 │   ├── static
+│   │   ├── image
+│   │   │   ├── logo-data.png
+│   │   │   └── logo-tfg.png
+│   │   └── styles.css
 │   ├── templates
+│   │   ├── index.html
+│   │   └── page_error.html
 │   └── utils
 ├── .gitignore
 ├── LICENSE
@@ -65,7 +72,7 @@ pip freeze > requirements.txt
 ```
 
 ## Contribuciones
-Las contribuciones son bienvenidas. Si deseas contribuir al proyecto, por favor haz un 'fork' del repositorio, crea una rama con tus mejoras y envía un 'pull request'.
+Las contribuciones son bienvenidas. Si deseas contribuir al proyecto, por favor haz un `fork` del repositorio, crea una rama con tus mejoras y envía un `pull request`.
 
 ## Licencia
 Este proyecto está bajo la Licencia `GPL-3.0`, lo que permite el uso, distribución y modificación del software bajo ciertas condiciones. Consulta el archivo LICENSE para más detalles.
