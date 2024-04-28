@@ -1,3 +1,93 @@
+/* Property sobre los colores */
+:root {
+    --vino: #59121F;
+    --marron: #744B46;
+    --azul: #6D86A6;
+    --beige: #C0ADA8;
+    --verde-claro: #9DC47A;
+    --verde-oscuro: #55852F;
+    --gris: #6B6B6B;
+    --blanco: #FFFFFF;
+}
+
+/* Estilos generales sobre los elementos de los fichero html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1440px;
+}
+
+.container {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-txt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.logo-txt h1 {
+    font-size: 5vw;
+    color: var(--verde-claro);
+}
+
+.logo-txt h3 {
+    font-size: 2vw;
+    color: var(--marron);
+}
+
+.container img {
+    max-width: 40%;
+    height: auto;
+}
+
+.container p {
+    color: var(--gris);
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+
+
+
+
+
+
+
+
+/* EN REVISION */
+.container-data {
+    padding: 10px;
+    margin: 20px;
+    margin-top: 100px;
+    background-color: var(--verde-oscuro);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-data p, h3 {
+    color: var(--blanco);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para el fichero page_error */
 .img_err_body, .img_err_html
 {
     height: 100%;
