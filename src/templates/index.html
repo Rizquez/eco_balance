@@ -4,8 +4,7 @@
         <link rel="stylesheet" type="text/css" href="./static/styles.css"/>
     </head>
     <body>
-        
-        <section class="container">
+        <section class="container-general">
             <p>Metabolismo urbano</p>
             <p> - </p>
             <p>Cambio climático</p>
@@ -19,25 +18,59 @@
             <p>Funcionalidad</p>
         </section>
 
-
-        <section class="container">
-            <div class="logo-txt">
+        <section class="container-general">
+            <div class="container-logo-txt">
                 <h1>LA CIUDAD COMO SUMIDERO DE CARBONO</h1>
                 <h3>Calcula la vegetación para tu proyecto</h3>
             </div>
-            <img src="{{url_for('static', filename='image/logo-tfg.png')}}" alt="Logo TFG"/>
+            <img class="img-logo-tfg" src="{{url_for('static', filename='image/logo-tfg.png')}}" alt="Logo TFG"/>
         </section>
 
+        <div class="line-horizontal"></div>
+    
+        <section class="container-arboles">
+            <img class="img-arboles" src="{{url_for('static', filename='image/logo-arboles.png')}}" alt="Logo Arboles"/>
+            <h2>Construyendo ciudades que respiran</h2>
+            <img class="img-arboles" src="{{url_for('static', filename='image/logo-arboles.png')}}" alt="Logo Arboles"/>
+        </section>
 
-        <section class="container container-data">
-            <img src="{{url_for('static', filename='image/GW6A6175.jpg')}}" alt="Logo Datos"/>
-            <div>
+        <div class="div-space"></div>
+
+        <section class="container-general container-data">
+            <img class="img-logo-bbdd" src="{{url_for('static', filename='image/logo-bbdd.png')}}" alt="Logo Datos"/>
+            <div class="">
                 <h3>Datos del proyecto</h3>
-                <p>Superficie disponibles (m<sup>2</sup>)</p>
-                <p>Cantidad de CO<sub>2</sub> generado por año</p>
-                <p>Número de arboles máximos a plantar</p>
+                <form action="{{url_for('home')}}" method="post">
+                    <div class="space-element">
+                        <label for="co2-capture">Cantidad de CO<sub>2</sub> a capturar (tn/año):</label>
+                        <input type="number" id="co2-capture" name="co2-capture" min="0" step="0.01" required>
+                    </div>
+                    <div class="space-element">
+                        <label for="tree-number">Número de árboles a plantar:</label>
+                        <input type="number" id="tree-number" name="tree-number" min="0" step="1" required>
+                    </div>
+                    <div class="space-element">
+                        <button type="submit">Calcular</button>
+                    </div>
+                </form>
             </div>
         </section>
+
+
+
+
+        <section>
+            {% if co2_capture and tree_number %}
+            <div>
+                <h4>Resultados del Cálculo:</h4>
+                <p>Cantidad de CO<sub>2</sub> a capturar: {{ co2_capture }} tn/año</p>
+                <p>Número de árboles a plantar: {{ tree_number }}</p>
+            </div>
+            {% endif %}
+        </section>
+        
+
+
 
     </body>
 </html>
