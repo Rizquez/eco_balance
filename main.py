@@ -17,7 +17,7 @@ app.config.from_object(config[env])
 
 # Una vez realizada toda la configuracion, iniciamos la app.
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # FIN DEL FICHERO
