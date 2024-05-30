@@ -2,7 +2,6 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="icon" href="/icon-web.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="./static/styles.css"/>
@@ -28,21 +27,21 @@
                 <h1>LA CIUDAD COMO SUMIDERO DE CARBONO</h1>
                 <h3>Calcula la vegetación para tu proyecto</h3>
             </div>
-            <img class="img-logo-tfg" src="{{url_for('static', filename='image/logo-tfg.png')}}" alt="Logo TFG"/>
+            <img class="img-logo-tfg" src="{{url_for('static', filename='images/logo-tfg.png')}}" alt="Logo TFG"/>
         </section>
 
         <div class="line-horizontal"></div>
     
         <section class="container-arboles">
-            <img class="img-arboles" src="{{url_for('static', filename='image/logo-arboles.png')}}" alt="Logo Arboles"/>
+            <img class="img-arboles" src="{{url_for('static', filename='images/logo-arboles.png')}}" alt="Logo Arboles"/>
             <h2>Construyendo ciudades que respiran</h2>
-            <img class="img-arboles" src="{{url_for('static', filename='image/logo-arboles.png')}}" alt="Logo Arboles"/>
+            <img class="img-arboles" src="{{url_for('static', filename='images/logo-arboles.png')}}" alt="Logo Arboles"/>
         </section>
 
         <div class="div-space"></div>
 
         <section class="container-general container-data">
-            <img class="img-logo-bbdd" src="{{url_for('static', filename='image/logo-bbdd.png')}}" alt="Logo Datos"/>
+            <img class="img-logo-bbdd" src="{{url_for('static', filename='images/logo-bbdd.png')}}" alt="Logo Datos"/>
             <div class="">
                 <h3>Datos del proyecto</h3>
                 <form action="{{url_for('home')}}" method="post">
@@ -61,18 +60,37 @@
             </div>
         </section>
 
+        
+    {% if table_data %}
+    <h2>Resultados</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Especie</th>
+                <th>Máxima Altura (m)</th>
+                <th>Necesidad Hídrica</th>
+                <th>Tipo</th>
+                <th>Absorción Anual (Árbol)</th>
+                <th>Absorción Anual (Grupo árboles)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table_data %}
+            <tr>
+                <td>{{ row['especie'] }}</td>
+                <td>{{ row['max_altura_m'] }}</td>
+                <td>{{ row['necesidad_hidrica'] }}</td>
+                <td>{{ row['tipo'] }}</td>
+                <td>{{ row['absorcion_anual'] }}</td>
+                <td>{{ row['absorcion_anual_arbol'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 
 
-
-        <section>
-            {% if co2_capture and tree_number %}
-            <div>
-                <h4>Resultados del Cálculo:</h4>
-                <p>Cantidad de CO<sub>2</sub> a capturar: {{ co2_capture }} tn/año</p>
-                <p>Número de árboles a plantar: {{ tree_number }}</p>
-            </div>
-            {% endif %}
-        </section>
+        
         
 
 

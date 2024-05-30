@@ -1,23 +1,19 @@
 # -------------------------------------------------------------------------------------------------------------------------------------------------
-# IMPORTACION DE LIBRERIAS
-
-import os
-from config import config
+# LIBRERIAS / APIs NECESARIAS
+# -------------------------------------------------------------------------------------------------------------------------------------------------
 from src.routes import app
+from config import current_config
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
 # OPERATIVO
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Por defecto siempre vamos a instanciar la API en modo de desarrollo, en caso de que no se indique otro modo de ejecucion
-env = os.getenv('FLASK_ENV', 'development')
-
-# Aplicamos las diferentes configuraciones sobre una APP
-app.config.from_object(config[env])
+# Aplicamos las diferentes configuraciones sobre una app
+app.config.from_object(current_config)
 
 # Una vez realizada toda la configuracion, iniciamos la app.
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host=current_config.HOST, port=current_config.PORT)
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # FIN DEL FICHERO

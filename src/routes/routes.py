@@ -1,6 +1,7 @@
 # -------------------------------------------------------------------------------------------------------------------------------------------------
-# IMPORTACION DE LIBRERIAS
-
+# LIBRERIAS / APIs NECESARIAS
+# -------------------------------------------------------------------------------------------------------------------------------------------------
+from ..models import obtain_trees
 from flask import Flask, render_template, redirect, request
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -11,18 +12,22 @@ app = Flask(__name__, template_folder='../templates', static_folder='../static')
 # Ruta raiz para el calculo
 @app.route('/', methods=['GET', 'POST'])
 def home():
-
     # Verificamos si se enviaron datos
     if request.method == 'POST':
 
-        # Extraemos los datos de la peticion 
-        co2_capture = request.form.get('co2-capture')
-        tree_number = request.form.get('tree-number')
+        # Extraemos los datos de la peticion aplicando un casting
+        co2_capture = float(request.form.get('co2-capture'))
+        tree_number = float(request.form.get('tree-number'))
 
-        return render_template('index.html', co2_capture=co2_capture, tree_number=tree_number)
+        # Llamamos al metodo para realizar el filtrado sobre los datos introducidos por el usuario
+        dct_tress = obtain_trees(tree_number, co2_capture)
+
+        # Renderizamos el template index con los datos a insertar
+        return render_template('index.html', table_data=dct_tress)
     
     # Si no es POST, simplemente cargamos la pagina sin datos de resultado
-    return render_template('index.html')
+    return render_template('index.html', table_data=None)
+
 
 # Manejador de errores mas comunes
 @app.errorhandler(404)

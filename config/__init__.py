@@ -1,1 +1,18 @@
-from config.config import dct_config as config
+# -------------------------------------------------------------------------------------------------------------------------------------------------
+# LIBRERIAS / APIs NECESARIAS
+# -------------------------------------------------------------------------------------------------------------------------------------------------
+import os
+from ._config import ProductionConfig, DevelopmentConfig
+from dotenv import load_dotenv
+load_dotenv(override=False)
+# -------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Capturamos el tipo de entorno de ejecucion de la app
+env = os.getenv('FLASK_ENV')
+
+# Asignamos el tipo de configuracion segun el entorno de ejecucion
+current_config = ProductionConfig if env == 'production' else DevelopmentConfig
+
+# -------------------------------------------------------------------------------------------------------------------------------------------------
+# FIN DEL FICHERO
+# -------------------------------------------------------------------------------------------------------------------------------------------------
