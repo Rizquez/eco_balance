@@ -54,11 +54,22 @@
                 </form>
             </div>
         </section>
-    {% if table_data %}
+    {% if dct_tress %}
     <section id="table-result" class="container-table">
         <h4>Total CO<sub>2</sub> a capturar: {{co2_capture}} ton/año</h4>
         <h4>Total de áboles a plantar: {{tree_number}} ud</h4>
-        <h5>* Esta es una guía de las especies que cumple las necesidades de captura en plantaciones monoespecificas.</h5>
+        <div class="container-general">
+            <div>
+                <h5>* Esta es una guía de las especies que cumple las necesidades de captura en plantaciones monoespecificas.</h5>
+                <h5>** En la parte inferior encontraras una herramienta para crear grupos de diferentes especies.</h5>
+            </div>
+            <div>
+                <form id="downloadForm" action="{{ url_for('download_file') }}" method="post">
+                    <input type="hidden" name="data" id="json-data">
+                    <button type="button" onclick="submitForm()">Descargar tabla</button>
+                </form>
+            </div>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -71,7 +82,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for row in table_data %}
+                {% for row in dct_tress %}
                 <tr>
                     <td>{{ row['especie'] }}</td>
                     <td>{{ row['max_altura_m'] }}</td>
@@ -85,18 +96,25 @@
         </table>
     </section>
 
-
-
-
-
-
     
+
+
+
+
+
+
+
+
     {% endif %}
     <div id="customized-alert" class="hidden-alert">
         <p id="text-alert"></p>
         <button id="btn-ok" onclick="closeAlert()">Ok</button>
     </div>
-    <script>var message = "{{ message }}";</script>
     <script src="{{url_for('static', filename='scripts/utils.js')}}"></script>
+    <script>
+    var message = "{{ message }}";
+    var dct_tress_json = '{{ dct_tress | tojson }}';
+    var dct_tress = JSON.parse(dct_tress_json);
+    </script>
     </body>
 </html>

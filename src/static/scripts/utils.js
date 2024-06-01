@@ -4,6 +4,12 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 
+// Funcion para obtener la variable dct_tres y convertirla en un objeto json
+function submitForm() {
+    document.getElementById('json-data').value = JSON.stringify(dct_tress);
+    document.getElementById('downloadForm').submit();
+}
+
 // Funcion para mostrar en pantalla un mensaje a usuario
 function showAlert(msg) {
     document.getElementById('text-alert').textContent = msg

@@ -20,7 +20,7 @@ def obtain_trees(tree_number, co2_capture):
 
     Returns:
     --------
-    - Diccionario con los datos filtrados del dataframe en funcion de la solicitud del cliente.
+    - Lista de diccionarios con los datos filtrados del dataframe en funcion de la solicitud del cliente.
     """
     # Instanciamos la lista con las columnas que vamos a extraer para llevar a la app
     lst_columns = [

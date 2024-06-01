@@ -4,6 +4,7 @@
 import os
 import time
 import pandas as pd
+import openpyxl
 from sqlalchemy.engine.url import URL
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError
@@ -105,6 +106,154 @@ class MySQLDataManager():
         with engine.begin() as connection:
             df = pd.read_sql_query(text(consulta), connection, params=params)
             return df
+
+
+def format_dataframe(df):
+    """
+    Apply:
+    ------
+    Metodo para darle formato al dataframe que se quiera almacenar en Excel para posterior descarga por parte del usuario.
+
+    Parameters:
+    -----------
+    df: ``pd.core.frame.Dataframe``
+        Dataframe al que se le quiere dar formato.
+
+    Returns:
+    --------
+    - Dataframe formateado para su almacenado en Excel.
+    """
+    # Instaciamos el diccionario para mapear el nombre de las columnas
+    dct_remane = {
+        'especie': 'Especie',
+        'max_altura_m': 'Máxima Altura (m)',
+        'necesidad_hidrica': 'Necesidad Hídrica',
+        'tipo': 'Tipo',
+        'absorcion_anual':'Absorción Anual(ton/CO2 - Árbol)',
+        'absorcion_anual_arbol':'Absorción Anual(ton/CO2 - Arbolada)'				
+    }
+
+    # Instanciamos el diccionario para mapear el tipo de dato de las columnas
+    dct_data =  {
+        'max_altura_m': 'int64',
+        'absorcion_anual':'float64',
+        'absorcion_anual_arbol':'float64'	
+    }
+
+    # Vamos a dar formato a las columnas con los numeros flotantes
+    df = df.astype(dct_data)
+
+    # Renombramos las columnas
+    df.rename(dct_remane, axis=1, inplace=True)
+
+    # Ahora reordenamos las columnas y retornamos el dataframe
+    return df.reindex(list(dct_remane.values()), axis=1)
+
+
+def create_xlsx_file(file_name, tbl_name, sheet_name, df, mode, float_format, styletbl='TableStyleMedium14'):
+    """
+    Apply:
+    ------
+    Metodo para crear o añadir una tabla de datos por cada hoja sobre una ficha de excel.
+
+    Parameters:
+    -----------
+    file_name: ``str``
+        Ruta absoluta para el guardado de la ficha excel.
+
+    tbl_name: ``str``
+        Nombre que se desea posea la tabla.
+
+    sheet_name: ``str``
+        Nombre que se desea posea la hoja.
+
+    df: ``pd.core.frame.Dataframe``
+        Dataframe con el que se creara la tabla en la ficha excel.
+
+    mode: ``str``
+        Tipo de guardado, puede ser escritura ``w`` o añadidura ``a``.
+
+    float_format: ``str``
+        Formato que tendran los numero decimales.
+
+    styletbl: ``str``
+        Default: ``TableStyleMedium9``
+            Estilo que se le desea aplicar a la tabla que se va a crear en el Excel.
+
+    Returns:
+    --------
+    - None.
+    """
+    # Generamos el estilo de las tablas que contendra el fichero .xlsx
+    estiloTabla = openpyxl.worksheet.table.TableStyleInfo(name=styletbl, showFirstColumn=False, showLastColumn=False)
+
+    # Instanciamos y escribimos los datos en la ruta de salida que nos pasan como parametro
+    with pd.ExcelWriter(file_name, mode=mode) as writer:
+
+        # Almanecamos el df con los diferentes parametros que nos interesan
+        df.to_excel(writer, sheet_name=sheet_name, index=False, float_format=float_format)
+
+    # Movemos el puntero al inicio del buffer
+    file_name.seek(0)
+
+    # Abrimos el workbook
+    wb = openpyxl.load_workbook(filename=file_name)
+
+    # Dimensionamos las tablas con los respectivos df
+    dimenTbl = f'A1:{openpyxl.utils.get_column_letter(df.shape[1])}{len(df)+1}'
+    tabla = openpyxl.worksheet.table.Table(displayName=tbl_name, ref=dimenTbl)
+
+    # Asignamos el estilo a las tablas
+    tabla.tableStyleInfo = estiloTabla
+
+    # Asignamos las tablas a cada hoja correspondiente
+    wb[sheet_name].add_table(tabla)
+
+    # Ajustamos las columnas
+    wb = _adjust_excel_columns(wb, sheet_name)
+
+    # Para finalizar guardamos el workbook
+    file_name.seek(0)
+    wb.save(file_name)
+    
+
+def _adjust_excel_columns(wb, sheet_name, h='center'):
+    """
+    Apply:
+    ------
+    Esta funcion ajusta las columnas de todas las tablas en una hoja de excel.
+    
+    Parameters:
+    -----------
+    wb: ``Openpyxl.Woorkbook``
+        Objeto de la libreria Openpyxl.
+
+    sheet_name: ``str``
+        Nombre de la hoja donde se encuentra la tabla.
+
+    h: ``str``
+        Default ``center``
+            Tipo de justificacion que se requiere en la tabla, por defecto sera centrado.
+    
+    Returns:
+    --------
+    - Retorna el mismo objeto workbook pero con las columnas y sus datos centrados en todas las tablas 
+    contenidas en la hoja indicada.
+    """
+    PLUS_LENGTH = 8
+    for column in wb[sheet_name].columns:   
+        max_length = 0
+        column = [cell for cell in column]
+        for cell in column:
+            try:
+                if len(str(cell.value)) > max_length:
+                    max_length = len(str(cell.value))
+                cell.alignment = openpyxl.styles.Alignment(horizontal=h)
+            except AttributeError:
+                pass
+        adjusted_width = (max_length + PLUS_LENGTH)
+        wb[sheet_name].column_dimensions[column[0].column_letter].width = adjusted_width
+    return wb
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 # FIN DEL FICHERO
