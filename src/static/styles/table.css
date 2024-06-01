@@ -1,0 +1,32 @@
+@import url('base.css');
+
+.container-table{
+    margin: 20px;
+}
+
+.container-table h4 {
+    color: var(--marron);
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.container-table h5 {
+    color: var(--gris);
+}
+
+.container-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 5px solid var(--beige);
+}
+
+.container-table th, .container-table td {
+    border: 2px solid var(--beige);
+    padding: 8px;
+    text-align: center;
+}
+
+.container-table th {
+    background-color: var(--gris);
+    color: var(--blanco);
+}

@@ -1,0 +1,34 @@
+@import url('base.css');
+
+.hidden-alert {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--blanco);
+    border: 5px solid var(--gris);
+    border-radius: 30px;
+    padding: 10px;
+    z-index: 1000;
+    text-align: center;
+    color: var(--gris);
+    font-size: 1.5vw;
+}
+
+#text-alert {
+    margin-bottom: 15px;
+}
+
+#btn-ok {
+    background-color: var(--beige);
+    color: var(--vino);
+    font-weight: bold;
+    padding: 10px 35px;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+

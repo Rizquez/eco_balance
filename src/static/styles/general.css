@@ -1,22 +1,4 @@
-/* Property sobre los colores */
-:root {
-    --vino: #59121F;
-    --marron: #744B46;
-    --azul: #6D86A6;
-    --beige: #C0ADA8;
-    --verde-claro: #9DC47A;
-    --verde-oscuro: #55852F;
-    --gris: #6B6B6B;
-    --blanco: #FFFFFF;
-}
-
-/* Estilos generales sobre los elementos de los fichero html */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1440px;
-}
+@import url('base.css');
 
 h3 {
     font-size: 2.5vw;
@@ -121,20 +103,4 @@ h3 {
 
 .div-space {
     margin: 60px;
-}
-
-/* Estilos para el fichero page_error */
-.img_err_body, .img_err_html
-{
-    height: 100%;
-    margin: 0;
-}
-
-.img_err_bg
-{
-    background-image: url('../static/image/image-error.jpg');
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }

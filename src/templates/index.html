@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="./static/styles.css"/>
-        <title>TFG Karla</title>
+        <link rel="stylesheet" type="text/css" href="./static/main.css"/>
+        <title>TFG Karla Hernadez</title>
     </head>
     <body>
         <section class="container-general">
@@ -21,7 +21,6 @@
             <p> - </p>
             <p>Funcionalidad</p>
         </section>
-
         <section class="container-general">
             <div class="container-logo-txt">
                 <h1>LA CIUDAD COMO SUMIDERO DE CARBONO</h1>
@@ -29,17 +28,13 @@
             </div>
             <img class="img-logo-tfg" src="{{url_for('static', filename='images/logo-tfg.png')}}" alt="Logo TFG"/>
         </section>
-
         <div class="line-horizontal"></div>
-    
         <section class="container-arboles">
             <img class="img-arboles" src="{{url_for('static', filename='images/logo-arboles.png')}}" alt="Logo Arboles"/>
             <h2>Construyendo ciudades que respiran</h2>
             <img class="img-arboles" src="{{url_for('static', filename='images/logo-arboles.png')}}" alt="Logo Arboles"/>
         </section>
-
         <div class="div-space"></div>
-
         <section class="container-general container-data">
             <img class="img-logo-bbdd" src="{{url_for('static', filename='images/logo-bbdd.png')}}" alt="Logo Datos"/>
             <div class="">
@@ -59,41 +54,49 @@
                 </form>
             </div>
         </section>
-
-        
     {% if table_data %}
-    <h2>Resultados</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Especie</th>
-                <th>Máxima Altura (m)</th>
-                <th>Necesidad Hídrica</th>
-                <th>Tipo</th>
-                <th>Absorción Anual (Árbol)</th>
-                <th>Absorción Anual (Grupo árboles)</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in table_data %}
-            <tr>
-                <td>{{ row['especie'] }}</td>
-                <td>{{ row['max_altura_m'] }}</td>
-                <td>{{ row['necesidad_hidrica'] }}</td>
-                <td>{{ row['tipo'] }}</td>
-                <td>{{ row['absorcion_anual'] }}</td>
-                <td>{{ row['absorcion_anual_arbol'] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <section id="table-result" class="container-table">
+        <h4>Total CO<sub>2</sub> a capturar: {{co2_capture}} ton/año</h4>
+        <h4>Total de áboles a plantar: {{tree_number}} ud</h4>
+        <h5>* Esta es una guía de las especies que cumple las necesidades de captura en plantaciones monoespecificas.</h5>
+        <table>
+            <thead>
+                <tr>
+                    <th>Especie</th>
+                    <th>Máxima Altura (m)</th>
+                    <th>Necesidad Hídrica</th>
+                    <th>Tipo</th>
+                    <th>Absorción Anual (ton/CO<sub>2</sub> - Árbol)</th>
+                    <th>Absorción Anual (ton/CO<sub>2</sub> - Arbolada)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table_data %}
+                <tr>
+                    <td>{{ row['especie'] }}</td>
+                    <td>{{ row['max_altura_m'] }}</td>
+                    <td>{{ row['necesidad_hidrica'] }}</td>
+                    <td>{{ row['tipo'] }}</td>
+                    <td>{{ row['absorcion_anual'] }}</td>
+                    <td>{{ row['absorcion_anual_arbol'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+
+
+
+
+
+    
     {% endif %}
-
-
-        
-        
-
-
-
+    <div id="customized-alert" class="hidden-alert">
+        <p id="text-alert"></p>
+        <button id="btn-ok" onclick="closeAlert()">Ok</button>
+    </div>
+    <script>var message = "{{ message }}";</script>
+    <script src="{{url_for('static', filename='scripts/utils.js')}}"></script>
     </body>
 </html>

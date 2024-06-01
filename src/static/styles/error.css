@@ -1,0 +1,14 @@
+.img_err_body, .img_err_html
+{
+    height: 100%;
+    margin: 0;
+}
+
+.img_err_bg
+{
+    background-image: url('../images/image-error.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
