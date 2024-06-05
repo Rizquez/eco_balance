@@ -13,5 +13,19 @@ body {
     font-family: Arial, sans-serif;
     margin: 0 auto;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1920px;
+}
+
+footer {
+    margin: 20px;
+}
+
+footer p, footer a {
+    color: var(--gris);
+    text-align: center;
+    text-decoration: none;
+}
+
+footer sub, footer span {
+    font-weight: bold;
 }

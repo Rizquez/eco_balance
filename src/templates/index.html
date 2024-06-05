@@ -56,8 +56,9 @@
             </div>
         </section>
     {% if dct_tress %}
-    <section id="table-result" class="container-table">
-        <h4>Total CO<sub>2</sub> a capturar: {{co2_capture}} ton/año</h4>
+    <div id="table-result" class="line-horizontal-table"></div>
+    <section class="container-table">
+        <h4 id="co2Compensate">Total CO<sub>2</sub> a capturar: {{co2_capture}} tn/año</h4>
         <h4>Total de áboles a plantar: {{tree_number}} ud</h4>
         <div class="container-general">
             <div>
@@ -65,8 +66,8 @@
                 <h5>** En la parte inferior encontraras una herramienta para crear grupos de diferentes especies.</h5>
             </div>
             <div>
-                <form id="downloadForm" action="{{ url_for('download_file') }}" method="post">
-                    <input type="hidden" name="data" id="json-data">
+                <form id="downloadForm" action="{{ url_for('download_table') }}" method="post">
+                    <input type="hidden" name="json-data" id="json-data">
                     <button type="button" onclick="submitForm()">Descargar tabla</button>
                 </form>
             </div>
@@ -78,8 +79,8 @@
                     <th>Máxima Altura (m)</th>
                     <th>Necesidad Hídrica</th>
                     <th>Tipo</th>
-                    <th>Absorción Anual (ton/CO<sub>2</sub> - Árbol)</th>
-                    <th>Absorción Anual (ton/CO<sub>2</sub> - Arbolada)</th>
+                    <th>Absorción Anual (tn/CO<sub>2</sub> - Árbol)</th>
+                    <th>Absorción Anual (tn/CO<sub>2</sub> - Arbolada)</th>
                 </tr>
             </thead>
             <tbody>
@@ -96,17 +97,26 @@
             </tbody>
         </table>
     </section>
-
-    
-
-
-
-
-
-
-
-
+    <section class="container-especies">
+        <h4>Creación de grupos de especies</h4>
+        <div class="create-group">
+            <div id="container-div"></div>
+            <div class="compensate-group">
+                <h1>Toneladas anuales de CO<sub>2</sub> a compensar</h1>
+                <h2 id="co2ToCompensateDisplay">{{co2_capture}} tn</h2>
+                <h1 id="totalArboles">Total árboles: 0 ud</h1>
+            </div>
+        </div>
+        <div class="container-btn">
+            <button type="button" onclick="addSpecies()">Añadir árbol</button>
+        </div>
+        <div id="button-container" class="container-btn"></div>
+    </section>
     {% endif %}
+    <footer>
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">E<span>CO</span><sub>2</sub> Balance by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/karlam-hernandez/" target="_blank">Karla Hernandez</a> & <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/pedro-rizquez/" target="_blank">Pedro Rizquez</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+        <p>© 2024 All rights reserved</p>
+    </footer>
     <div id="customized-alert" class="hidden-alert">
         <p id="text-alert"></p>
         <button id="btn-ok" onclick="closeAlert()">Ok</button>

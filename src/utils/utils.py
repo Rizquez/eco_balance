@@ -106,7 +106,7 @@ class MySQLDataManager():
         with engine.begin() as connection:
             df = pd.read_sql_query(text(consulta), connection, params=params)
             return df
-
+    
 
 def format_dataframe(df):
     """
@@ -139,6 +139,12 @@ def format_dataframe(df):
         'absorcion_anual':'float64',
         'absorcion_anual_arbol':'float64'	
     }
+
+    # Puede existir el caso en el que existe la columna cantidad en el dataframe a formatear
+    # Por eso verificamos antes de cambiar el nombre de las columnas
+    if 'cantidad' in df.columns:
+        dct_remane['cantidad'] = 'Cantidad (ud)'
+        dct_data['cantidad'] = 'int64'
 
     # Vamos a dar formato a las columnas con los numeros flotantes
     df = df.astype(dct_data)

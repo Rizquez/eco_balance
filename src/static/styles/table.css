@@ -7,8 +7,9 @@
 
 .container-table h4 {
     color: var(--marron);
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     text-align: center;
+    margin: 10px;
 }
 
 .container-table h5 {
@@ -41,4 +42,10 @@
     cursor: pointer;
     border-radius: 30px;
     text-decoration: none;
+}
+
+.line-horizontal-table {
+    height: 5px; 
+    background-color: var(--vino);
+    margin: 30px 15px;
 }

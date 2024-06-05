@@ -6,7 +6,7 @@ import pandas as pd
 from io import BytesIO
 from ..models import obtain_trees
 from ..utils import create_xlsx_file, format_dataframe
-from flask import Flask, render_template, redirect, request, send_file
+from flask import Flask, render_template, redirect, request, send_file, jsonify
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Instanciamos la app
@@ -18,9 +18,13 @@ def home():
     # Verificamos si se enviaron datos
     if request.method == 'POST':
 
-        # Extraemos los datos de la peticion aplicando un casting
+        # Extraemos los datos de la peticion aplicando un casting segun el tipo de dato recibido
         co2_capture = float(request.form.get('co2-capture'))
         tree_number = int(request.form.get('tree-number'))
+
+        # Verificamos la posibilidad de que el valor de la variable co2_capture sea un entero
+        if co2_capture.is_integer():
+            co2_capture = int(co2_capture)
 
         # Llamamos al metodo para realizar el filtrado sobre los datos introducidos por el usuario
         dct_tress = obtain_trees(tree_number, co2_capture)
@@ -37,20 +41,51 @@ def home():
 
 
 # Ruta para descargar los documentos
-@app.route('/download', methods=['GET', 'POST'])
-def download_file():
+@app.route('/download-table', methods=['POST'])
+def download_table():
     # Constantes de calculo
-    NAME_FILE = 'Calculador de Carbono Capturado.xlsx'
-    NAME_SHEET = 'Arbolado'
-    NAME_TABLE = 'Especies_Captura_Carbono'
+    NAME_FILE = 'Guia de plantaciones monoespecificas.xlsx'
+    NAME_SHEET = 'Especies Arbolada'
+    NAME_TABLE = 'Tabla_Especies_Cumplen'
     FLOAT_FORMAT = '%.4f'
 
     # Primero que nada vamos a extraer el diccionario con los datos de los arboles filtrados
-    request_data = request.form.get('data')
-    dct_tress = json.loads(request_data)
-
+    request_data = request.form.get('json-data')
+    lst_data = json.loads(request_data)
+    
     # Creamos un DataFrame de pandas con los datos de la tabla
-    df = pd.DataFrame(dct_tress)
+    df = pd.DataFrame(lst_data)
+
+    # Formateamos el dataframe antes de almacenarlo
+    df = format_dataframe(df)
+
+    # Instanciamos y escribimos los datos en la ruta de salida que nos pasan como parametro
+    # Usando un buffer en memoria para guardar el archivo Excel
+    # Almacenando el dataframe con los diferentes parametros que nos interesan
+    excel_file = BytesIO()
+    create_xlsx_file(excel_file, NAME_TABLE, NAME_SHEET, df, 'w', FLOAT_FORMAT)
+
+    # Movemos el puntero al inicio del buffer
+    excel_file.seek(0)
+
+    return send_file(
+        excel_file, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', as_attachment=True, download_name=NAME_FILE
+        )
+
+
+@app.route('/download-group', methods=['POST'])
+def download_group():
+    # Constantes de calculo
+    NAME_FILE = 'Grupo de plantaciones monoespecificas.xlsx'
+    NAME_SHEET = 'Grupo Especies Arbolada'
+    NAME_TABLE = 'Tabla_Grupo_Especies'
+    FLOAT_FORMAT = '%.4f'
+
+    # Extraemos la lista de datos
+    lst_data = request.get_json()
+
+    # Instanciamos un dataframe con los datos que se llevaran al excel
+    df = pd.DataFrame(lst_data)
 
     # Formateamos el dataframe antes de almacenarlo
     df = format_dataframe(df)
