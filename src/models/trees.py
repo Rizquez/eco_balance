@@ -51,6 +51,9 @@ def obtain_trees(tree_number, co2_capture):
     # Por ultimo con la cantidad de CO2 que se quiere absorber se filtran todos los arboles que puedan cumplir con esta condicion
     df_filter = df_trees.loc[df_trees['absorcion_anual_arbol'] >= co2_capture, lst_columns].reset_index(drop=True)
 
+    # Organizamos el dataframe por orden alfabetico en funcion de la columna especie
+    df_filter.sort_values(['especie'], ascending=True, inplace=True)
+
     # Verificamos si el dataframe tiene datos para redondear los valores numericos y almacenarlos
     if not df_filter.empty:
 
