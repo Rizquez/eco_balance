@@ -41,9 +41,9 @@ def obtain_trees(tree_number, co2_capture):
     # ---------------------------------------------------------------------------------------------------------------------------------------------
     # *** CALCULOS Y FILTRADOS ***
 
-    # La columna de absorcion extraida de la bbdd es la cantidad que absorbe cada especie durante los primeros 20 años de vida 
-    # pero necesitamos la absorcion anual
-    df_trees['absorcion_anual'] = df_trees['absorcion']/20
+    # La columna de absorcion extraida de la bbdd es la cantidad de absorcion anual de cada especie, necesitaremos hacer un mapeo de nombre de 
+    # las columnas para el dataframe
+    df_trees.rename({'absorcion': 'absorcion_anual'}, axis=1, inplace=True)
 
     # Ahora con la cantidad de arboles que se quieren plantar vamos a calcular cuanto seria la absorcion anual de dicha cantidad
     df_trees['absorcion_anual_arbol'] = df_trees['absorcion_anual'] * tree_number

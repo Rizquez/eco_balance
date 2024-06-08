@@ -23,19 +23,26 @@ La interfaz permite a los usuarios:
 ## Estructura del proyecto
 ```
 ├── config
-│   └── config.py
+│   ├── __init__.py
+│   └── _config.py
 ├── src
+│   ├── models
+│   │   ├── __init__.py
+│   │   └── trees.py
 │   ├── routes
+│   │   ├── __init__.py
 │   │   └── routes.py
 │   ├── static
-│   │   ├── image
-│   │   │   ├── logo-data.png
-│   │   │   └── logo-tfg.png
-│   │   └── styles.css
+│   │   ├── images/...
+│   │   ├── scripts/...
+│   │   ├── styles/...
+│   │   └── main.css
 │   ├── templates
 │   │   ├── index.html
 │   │   └── page_error.html
 │   └── utils
+│       ├── __init__.py
+│       └── utils.py
 ├── .gitignore
 ├── LICENSE
 ├── main.py
