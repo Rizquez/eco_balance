@@ -1,4 +1,4 @@
-# La ciudad como sumidero de Carbono
+# ECO<sub>2</sub> Balance
 ![img](images/font_page.png)
 
 ## Descripcion del proyecto
@@ -9,7 +9,7 @@ La mayor reserva de carbono biológicamente activo de los ecosistemas terrestres
 
 ## Funcionalidad
 La interfaz permite a los usuarios:
-- Indicar las toneladas de emisiones de CO<sub>2</sub> específicas de la zona, en conjunto con el total de unidades arbóreas a plantar.
+- Indicar las toneladas de emisiones de CO<sub>2</sub> específicas que se desean compensar, en conjunto con el total de unidades arbóreas a plantar.
 ![img](images/insert_data.png)
 - Recibir recomendaciones sobre los tipos de plantas necesarias para mitigar las emisiones de CO<sub>2</sub> indicadas.
 ![img](images/table.png)
@@ -54,35 +54,9 @@ Este proyecto esta construido con tecnologia de punta que asegura la eficacia, s
 > [!NOTE]
 > Todo el proyecto esta desarrollado en el Framework `Flask` de `Python`.
 
-## Creacion del entorno de virtual
-Se necesitara tener instalada previamente la libreria 'virtualenv', en caso contrario se podra instalar ejecutando el siguiente comando:
-```
-pip install virtualenv
-```
-
-Una vez instalada, para crear un entorno de desarrollo se debe ejecutar:
-```
-virtualenv venv
-```
-> [!TIP]
-Se recomienda la creación de un entorno virtual para optimizar el desarrollo y la ejecución del proyecto.
-
-## Dependencias
-Comando para instalar las dependencias necesarias sobre este proyecto:
-```
-pip install -r requirements.txt
-```
-
-Comando para crear o actualizar el archivo txt que almacena las dependencias del proyecto:
-```
-pip freeze > requirements.txt  
-```
-
 ## Contribuciones
-Las contribuciones son bienvenidas. Si deseas contribuir al proyecto, por favor haz un `fork` del repositorio, crea una rama con tus mejoras y envía un `pull request`.
+Este proyecto está cerrado para contribuciones. No se aceptarán pull requests ni issues nuevos. Gracias por su comprensión.
 
 ## Licencia
-Este proyecto está bajo la Licencia `GPL-3.0`, lo que permite el uso, distribución y modificación del software bajo ciertas condiciones. Consulta el archivo LICENSE para más detalles.
-
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span>ECO<sub>2</sub> Balance</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/karlam-hernandez/" target="_blank">Karla Hernandez</a> & <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/pedro-rizquez/" target="_blank">Pedro Rizquez</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
-<p>© 2024 All rights reserved</p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">ECO<sub>2</sub> Balance por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/karlam-hernandez/" target="_blank">Karla Hernandez</a> & <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/pedro-rizquez/" target="_blank">Pedro Rizquez</a> se licencia bajo <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a> y <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPL-3.0</a></p>
+<p>© 2024 Todos los derechos reservados</p>
