@@ -2,7 +2,7 @@
 # LIBRERIAS / APIs NECESARIAS
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 import os
-from ._config import ProductionConfig, DevelopmentConfig
+from .config import ProductionConfig, DevelopmentConfig
 from dotenv import load_dotenv
 load_dotenv(override=False)
 # -------------------------------------------------------------------------------------------------------------------------------------------------

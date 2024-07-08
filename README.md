@@ -1,4 +1,5 @@
 # La ciudad como sumidero de Carbono
+![img](images/font_page.png)
 
 ## Descripcion del proyecto
 Este proyecto desarrolla una interfaz de usuario que permite calcular la emisión de carbono de los proyectos de edificación. La herramienta proporciona análisis detallados sobre cómo diferentes especies de plantas y árboles pueden ser utilizados para mitigar estas emisiones, contribuyendo así a la lucha contra el cambio climático y promoviendo la sostenibilidad urbana.
@@ -17,20 +18,27 @@ El objetivo de esta herramienta es doble:
 ## Funcionalidad
 La interfaz permite a los usuarios:
 - Calcular las emisiones de carbono específicas de proyectos de edificación.
+![img](images/insert_data.png)
 - Recibir recomendaciones sobre tipos de plantas y técnicas para mitigar las emisiones detectadas.
+![img](images/table.png)
 - Visualizar la distribución efectiva de especies vegetales en planos y elevaciones para maximizar la captura de carbono.
+![img](images/group.png)
+
+## Tecnologia
+Este proyecto esta construido con tecnologia de punta que asegura la eficacia, seguridad, eficiencia y una excelente experiencia de usuario. Algunas de las tecnologias utilizadas incluyen:
+- Backend: Python
+- Frontend: JavaScripts, HTML, CSS
+- Base de datos: MySQL
+- Infraestructura: Despliegue en Render y almancenamiento de la Base de Datos en Clever Cloud
 
 ## Estructura del proyecto
 ```
 ├── config
-│   ├── __init__.py
-│   └── _config.py
+│   └── config.py
 ├── src
 │   ├── models
-│   │   ├── __init__.py
 │   │   └── trees.py
 │   ├── routes
-│   │   ├── __init__.py
 │   │   └── routes.py
 │   ├── static
 │   │   ├── images/...
@@ -41,7 +49,6 @@ La interfaz permite a los usuarios:
 │   │   ├── index.html
 │   │   └── page_error.html
 │   └── utils
-│       ├── __init__.py
 │       └── utils.py
 ├── .gitignore
 ├── LICENSE
