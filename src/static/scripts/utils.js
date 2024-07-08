@@ -81,14 +81,13 @@ function removeSpecies(button) {
 // updateCO2Compensation() - Suma todas las absorciones de CO2 listadas y actualiza la visualizacion del total a compensar.
 function updateCO2Compensation() {
     var absorptionInputs = document.querySelectorAll('input[type="text"][id^="total-absorcion"]')
-    var co2Compensate = parseFloat(document.getElementById('co2Compensate').textContent.match(/: ([\d.]+) tn\/año/)[1])
     var totalAbsorbed = 0
 
     absorptionInputs.forEach(function(input) {
         totalAbsorbed += parseFloat(input.value) || 0
     })
 
-    var currentCO2ToCompensate = parseFloat(co2Compensate - totalAbsorbed).toFixed(4)
+    var currentCO2ToCompensate = parseFloat(totalAbsorbed).toFixed(4)
     document.getElementById('co2ToCompensateDisplay').textContent = `${currentCO2ToCompensate} tn`
 }
 
