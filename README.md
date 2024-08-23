@@ -30,6 +30,7 @@ Este proyecto esta construido con tecnologia de punta que asegura la eficacia, s
 ```
 ├── config
 │   └── config.py
+├── images/...
 ├── src
 │   ├── models
 │   │   └── trees.py
