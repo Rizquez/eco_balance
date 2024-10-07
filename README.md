@@ -1,13 +1,13 @@
 # ECO<sub>2</sub> Balance
 ![img](images/font_page.png)
 
-## Descripcion del proyecto
+## 🧾 Descripcion del proyecto
 Este proyecto desarrolla una interfaz de usuario que permite calcular las toneladas de CO<sub>2</sub> capturadas por las diferentes especies arbóreas para compensar la excesiva presencia de dicho gas en la atmosfera. La herramienta proporciona análisis detallados sobre cómo diferentes especies de plantas y árboles pueden ser utilizados para mitigar estas emisiones, contribuyendo así a la lucha contra el cambio climático y promoviendo la sostenibilidad urbana.
 
-## Contexto
+## 🌱 Contexto
 La mayor reserva de carbono biológicamente activo de los ecosistemas terrestres se encuentra en los primeros dos metros de suelo. En un contexto de cambio climático intensificado, es crucial entender y mitigar las emisiones de carbono en ambientes urbanos. El carbono orgánico del suelo juega un papel fundamental en la regulación del clima, el suministro de agua, y la biodiversidad, ofreciendo servicios esenciales para el bienestar humano.
 
-## Funcionalidad
+## 🚀 Funcionalidad
 La interfaz permite a los usuarios:
 - Indicar las toneladas de emisiones de CO<sub>2</sub> específicas que se desean compensar, en conjunto con el total de unidades arbóreas a plantar.
 ![img](images/insert_data.png)
@@ -19,14 +19,14 @@ La interfaz permite a los usuarios:
 > [!NOTE]
 > Tanto las recomendaciones presentadas, como el grupo de especies creado se podran descargar como una tabla de `Excel` en formato `xlsx`.
 
-## Tecnologia
+## 🛠️ Tecnologias utilizadas
 Este proyecto esta construido con tecnologia de punta que asegura la eficacia, seguridad, eficiencia y una excelente experiencia de usuario. Algunas de las tecnologias utilizadas incluyen:
 - Backend: Python
 - Frontend: JavaScripts, HTML, CSS
 - Base de datos: MySQL
 - Infraestructura: Despliegue en Render y almancenamiento de la Base de Datos en Clever Cloud
 
-## Estructura del proyecto
+## 📂 Estructura del proyecto
 ```
 ├── config
 │   └── config.py
@@ -55,9 +55,9 @@ Este proyecto esta construido con tecnologia de punta que asegura la eficacia, s
 > [!NOTE]
 > Todo el proyecto esta desarrollado en el Framework `Flask` de `Python`.
 
-## Contribuciones
+## 🚧 Contribuciones
 Este proyecto está cerrado para contribuciones. No se aceptarán pull requests ni issues nuevos. Gracias por su comprensión.
 
-## Licencia
+## 📄 Licencia
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">ECO<sub>2</sub> Balance por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/karlam-hernandez/" target="_blank">Karla Hernandez</a> y <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/pedro-rizquez/" target="_blank">Pedro Rizquez</a>, se licencia bajo <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">CC BY-NC-ND 4.0</a> y <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPL-3.0</a>.</p>
 <p>© 2024 Todos los derechos reservados.</p>
