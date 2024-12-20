@@ -21,10 +21,10 @@ La interfaz permite a los usuarios:
 
 ## 🛠️ Tecnologias utilizadas
 Este proyecto esta construido con tecnologia de punta que asegura la eficacia, seguridad, eficiencia y una excelente experiencia de usuario. Algunas de las tecnologias utilizadas incluyen:
-- Backend: Python
-- Frontend: JavaScripts, HTML, CSS
-- Base de datos: MySQL
-- Infraestructura: Despliegue en Render y almancenamiento de la Base de Datos en Clever Cloud
+- Backend: `Python`
+- Frontend: `JavaScripts`, `HTML`, `CSS`
+- Base de datos: `MySQL`
+- Infraestructura: Despliegue en `Render` y almancenamiento de la Base de Datos en `Clever Cloud`.
 
 ## 📂 Estructura del proyecto
 ```
